@@ -1,0 +1,12 @@
+{
+  "name": "zoom",
+  "version": "1.0.0",
+  "description": "Zoom clone project",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
