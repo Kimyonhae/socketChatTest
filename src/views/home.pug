@@ -1,0 +1,31 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Noom
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css@1.12/mvp.css")
+    body 
+    header
+        h1#title Zoom
+        main 
+        div#welcome
+            form#nickName
+                input(type="text", placeholder="nickname",required)
+                button change Name
+                h3#changeName       
+            form#roomName
+                input(type="text", placeholder="room name",required)
+                button Enter Room
+        div#room
+            ul 
+            form#name
+                input(type="text", placeholder="Write a name",required)
+                button Change
+                h3#currentName
+            form#msg
+                input(type="text", placeholder="Write a chat",required)
+                button Send
+        script(src="/socket.io/socket.io.js")
+        script(src="/public/js/app.js")
