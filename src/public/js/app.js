@@ -125,14 +125,25 @@ socket.on("answer",(answer) => {
     console.log("receive the answer");
     myPeerConnection.setRemoteDescription(answer);
 });
+socket.on("ice", (ice) => {
+    console.log("received candidate");
+    myPeerConnection.addIceCandidate(ice);
+});
 //WebRTC connect code
 function makeConnection(){
     myPeerConnection = new RTCPeerConnection();
     myPeerConnection.addEventListener("icecandidate",handleIce);
+    myPeerConnection.addEventListener("track",handleAddStream);
     myStream.getTracks().forEach((track) => myPeerConnection.addTrack(track,myStream));
 }
 function handleIce(data){
-    console.log("get candidate data")
-    console.log(data);
+    console.log("sent candidate");
+    socket.emit("ice",data.candidate,roomName);   
 }
+function handleAddStream(event){
+    const peerFace = document.querySelector("#peerFace");
+    event.streams.forEach((stream) => {
+        peerFace.srcObject = stream; // I can't see the face of the other person 
+    });
 
+}
